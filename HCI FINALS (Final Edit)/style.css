@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url('idk2.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 15rem;
+    
+}
+body {
+    min-height: 100vh;
+
+}
+.container
+{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.bubbles
+{
+    position: relative;
+    display: flex;
+
+}
+    .bubbles span {
+        position: relative;
+        width: 25px;
+        height: 25px;
+        background: #ff0101;
+        margin: 0 4px;
+        border-radius: 50%;
+        box-shadow: 0 0 0 10px #ff010144, 0 0 50px #ff0101, 0 0 100px #ff0101;
+        animation: animate 15s linear infinite;
+        animation-duration: calc(125s/ var(--i));
+    }
+        .bubbles span:nth-child(even) {
+            background: #b200ff;
+            box-shadow: 0 0 0 10px #b200ff44, 0 0 50px #b200ff, 0 0 100px #b200ff;
+        }
+@keyframes animate {
+    0% {
+        transform: translateY(100vh) scale(0)
+    }
+
+    100% {
+        transform: translateY(-10vh) scale(1)
+    }
+}
+
+.button {
+    font-family: "Balsamiq Sans", cursive;
+    font-size: 30px;
+    color: #fc007c;
+    width: 200px;
+    height: 50px;
+    background: transparent;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+    .button:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 0;
+        border-top: 2px solid #b200ff;
+        border-right: 2px solid #a700ff;
+        animation: border-top-right 3s infinite alternate;
+    }
+
+@keyframes border-top-right {
+    0% {
+        width: 0px;
+        height: 0px;
+    }
+
+    25% {
+        width: 200px;
+        height: 0px;
+    }
+
+    50% {
+        width: 200px;
+        height: 48px;
+    }
+
+    100% {
+        width: 200px;
+        height: 48px;
+    }
+}
+
+.button:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 2px solid #e056ea;
+    border-left: 2px solid #ff0fb8;
+    animation: border-bottom-left 3s infinite alternate;
+}
+
+@keyframes border-bottom-left {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+    }
+
+    50% {
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+    }
+
+    50.1% {
+        width: 0px;
+        height: 0px;
+        opacity: 1;
+    }
+
+    75% {
+        width: 200px;
+        height: 0px;
+        opacity: 1;
+    }
+
+    100% {
+        width: 200px;
+        height: 48px;
+        opacity: 1;
+    }
+}
+
+:root {
+    --clr-neon: hsl(317 100% 54%);
+    --clr-bg: hsl(323 21% 16%);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: var(--clr-bg);
+    font-family: "Balsamiq Sans", cursive;
+    color: var(--clr-neon);
+    padding-right: 0rem;
+}
+
+.neon-button {
+    font-size: 1rem;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+    position: fixed;
+    margin-top: 120px;
+    
+}
+
+    .neon-button::before {
+        pointer-events: none;
+        content: "";
+        position: absolute;
+        background: var(--clr-neon);
+        top: 120%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+        filter: blur(1em);
+        opacity: 0.7;
+    }
+
+    .neon-button::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        box-shadow: 0 0 2em 0.5em var(--clr-neon);
+        opacity: 0;
+        background-color: var(--clr-neon);
+        z-index: -1;
+        transition: opacity 100ms linear;
+    }
+
+    .neon-button:hover,
+    .neon-button:focus {
+        color: var(--clr-bg);
+        text-shadow: none;
+    }
+
+        .neon-button:hover::before,
+        .neon-button:focus::before {
+            opacity: 1;
+        }
+
+        .neon-button:hover::after,
+        .neon-button:focus::after {
+            opacity: 1;
+        }
+    
